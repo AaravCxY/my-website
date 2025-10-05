@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aarav Bhatnagar | Portfolio</title>
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ===== BODY ===== */
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* ===== NAVIGATION ===== */
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5vw;
+    }
+
+    .logo {
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      font-weight: 600;
+    }
+
+    .logo span {
+      color: #ccff00;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2vw;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: clamp(0.9rem, 1vw, 1.1rem);
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ccff00;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      order: -1;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: 90px;
+      background: #000;
+    }
+
+    .hero-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: clamp(180px, 30vw, 320px);
+      height: clamp(180px, 30vw, 320px);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ccff00;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+    }
+
+    .hero-text span {
+      color: #ccff00;
+    }
+
+    .hero-text .tagline {
+      margin: 15px 0;
+      font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    }
+
+    /* ===== SECTIONS ===== */
+    .about, .projects, .contact {
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    .about h2, .projects h2, .contact h2 {
+      color: #ccff00;
+      margin-bottom: 20px;
+      font-size: clamp(1.3rem, 2vw, 2rem);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact a {
+      color: #ccff00;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* ===== RESPONSIVE NAVIGATION ===== */
+    @media (max-width: 900px) {
+      .hamburger {
+        display: flex;
+        position: absolute;
+        left: 20px;
+      }
+
+      .logo {
+        margin-left: 60px;
+      }
+
+      nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 220px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+      }
+
+      nav ul.active {
+        transform: translateX(0);
+      }
+    }
+
+    /* ===== Small phones ===== */
+    @media (max-width: 500px) {
+      nav {
+        padding: 10px 20px;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .hero-text h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero-text .tagline {
+        font-size: 0.9rem;
+      }
+
+      .hero-image img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-icons img {
+        width: 28px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVIGATION ===== -->
+  <header>
+    <nav>
+      <h1 class="logo">Aarav<span>Bhatnagar</span></h1>
+
+      <!-- Hamburger Icon -->
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-image">
+        <img src="aarav.png" alt="Aarav Bhatnagar">
+      </div>
+      <div class="hero-text">
+        <p class="intro">Hey There I'm</p>
+        <h1>Aarav <span>Bhatnagar</span></h1>
+        <p class="tagline">Aspiring Software Developer | Problem Solver | AI Enthusiast</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate developer who loves exploring Java, Web Development, and AI.
+      I enjoy solving problems, building websites, and learning new technologies every day.
+    </p>
+    <br>
+    <h2>Skills</h2>
+    <p>
+Java | HTML | JavaScript | Figma | Sales | Brand Building | Advertisement | Filming | Scripting | Video Editing
+    </p>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card"><h3>Ferris-wheel</h3><img src="FerrisWheel.png"></div>
+      <div class="project-card"><h3>Moon-Orbit</h3><img src="moon sun.png"></div>
+      <div class="project-card"><h3>MyWebsite</h3><img src="MyWebsite.png"></div>
+      <div class="project-card"><h3>Recipe</h3><img src="Pasta.png"></div>
+      <div class="project-card"><h3>Dog Gallery</h3><img src="DogGallery.png"></div>
+      <div class="project-card"><h3>Profile Card</h3><img src="Profile Card.png"></div>
+      <div class="project-card"><h3>Portfolio</h3><img src="Portfolio.png"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:aaravbhatnagar777@gmail.com">aaravbhatnagar777@gmail.com</a></p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/aaravCxY">LINKEDIN |</a>
+      <a href="https://github.com/AaravCxY"> GITHUB</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Aarav Bhatnagar | All Rights Reserved.</p>
+  </footer>
+
+  <!-- ===== SCRIPT FOR HAMBURGER ===== -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
